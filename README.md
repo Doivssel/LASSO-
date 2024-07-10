@@ -6,7 +6,9 @@ Here is a small package that can be used to implent LASSO regression. This is mo
 
 Let's take a quick example, let's suppose that we have a dataset giving us the salary and the age of a group of people. If we plot this data on a 
 2d plane we would obtain a graph that would more or less look like that.
+
 ![5ab87522-132b-4a76-b63d-544b8df63df1](https://github.com/Doivssel/LASSO-/assets/172904759/e436c7d7-011d-4537-a397-55e51d554563)
+
 Indeed we could expect that the older someone is the more likely it is for that person to have a higher salary. In other word we
 expect a linear relation between the age and the salary. We expect our data to be of the 
 following form $y=\beta_0+\beta_1X+\epsilon$. Now how would could we explicit that
@@ -15,7 +17,9 @@ $\hat{y}=\hat{\beta_0}+\hat{\beta_1}X$ (there the $\hat{.}$ signifie estimate of
 want to find the estimate of $\beta$ So To do that
 we could use the ordinary least square method. The principle behind it is quite simple, consider the 
 following graph.
+
 ![2312358f-b723-4856-b586-b185dcd2e548](https://github.com/Doivssel/LASSO-/assets/172904759/1d6ea96f-96a7-431d-b4c8-a4b75cb44796)
+
 What the ordinary least square does is to minimise the sum of the red line. In other word
 it minimise the squared difference of the expected and the estimated value  
 ```math
