@@ -32,9 +32,9 @@ a somewhat "automatic" selection by using LASSO regression.
 
 ## Penalised 
 
-LASSO regression belong to a whole class of regression called penalised regression. The principle
+LASSO regression belong to a whole class of regression method called penalised regression. The principle
 behind LASSO regression is to penalise our model for having certain proprieties like
-the number of variables. In particular the LASSO can be seen as the following constrained problem.
+too many variables. In particular the LASSO can be seen as the following constrained problem.
 ```math
 \min_{\beta\in\mathbb{R}^p}\{S(\beta)\}\ \text{under the constraint}\sum_{j=1}^{k}|\beta_j|\le t\ , t\in\mathbb{R}^+
 ```
@@ -57,11 +57,13 @@ here but in the end we obtain the following algorithm,
 
 1. Choose  an initial point $\beta^{(0)}\in\mathbb{R}^p$
 2. Take a gradient step $$z=\beta^t-s^t\nabla g(\beta^t)$$
-3. Solve $\text{prox}_{s^th}(\beta^t-s^t\nabla g(\beta^t))$ as to obtain the generalised gradient stepsize. This can be done by applying the soft tresholding operator to z as such we obtain the next iteration 
-$$\beta^{t+1}=S_{s^t\lambda}(z)$$
+3. Solve $\text{prox}_{s^th} (\beta^t-s^t\nabla g(\beta^t))$ as to obtain the generalised gradient stepsize. This can be done by applying the soft tresholding operator to z as such we can express the next iteration as
 
-It can also be shown that by using the error decrease similarly to the function $\frac{1}{t^2}$
-while the last alogrithm error descreased similarly to the function $\frac{1}{t}$
+```math
+\beta^{(t+1)}=S_{s^t\lambda}(z)
+```
+
+It can also be shown that by using this alogorithm the error decrease similarly to the function $\frac{1}{t^2}$. This can be improven by using a different algorithm, this was found by nesterov and it involve only a few more steps. This alogrithm error descreased similarly to the function $\frac{1}{t}$
 
 
 ## Parameters
@@ -75,4 +77,4 @@ As to why this select variable, there is good geometric explanation of that.
 On this graph is projected the contour line of the OLS function and the constraint region.
 To find the solution obtained by the OLS, you need to look at the point were they first
 intersect. From this you can get a good understanding on how the LASSO regression select
-variable. Due to the form of the constrained region, th
+variable. 
