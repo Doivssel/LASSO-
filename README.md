@@ -4,9 +4,23 @@ Here is a small package that can be used to implent LASSO regression. This is mo
 
 ## How to use it
 
+Firstly you need to create an instance of the LASSO class. Then you can use the train method of that class. I may in the future implement other method
+to get the accuracy, the error and to make prediction.
+
+The train method takes in the following parameters,
+
+1. **y**: array, expected value
+2. **X**: array, variables of the data
+3. **iters**: int, number of iteration
+4. **lamb**: float, determine how restrictive the model will be
+5. **method**: string, either "Fast" or "Normal", choose which algorithm to use either proximal descent of fast proximal descent, if not precised it use fast proximal gradient, better for convergence speed, computation time is roughly the same for both method
+6. **stepsize**: string, either "Backtracking" or "Constant", choose which method will be used to determine the stepsize, if not precised it use the constant stepsize, better for computation time, convergence speed is roughly the same for both stepsize method.
+
+*For the dimension of the array, look at the example
 
 ## How it work
 
+I won't go too much into the details here but here is quick expalanation of how this work.
 Let's take a quick example, let's suppose that we have a dataset giving us the salary and the age of a group of people. If we plot this data on a 
 2d plane we would obtain a graph that would more or less look like that.
 
@@ -91,12 +105,12 @@ But this can be improven by using a different algorithm that use momentum. This 
 ```math
 \theta^{t+1}=\beta^{t+1}+\frac{t}{t+3}\left(\beta^{t+1}-\beta^{t}\right)
 ```
-Now you only need to make z equal to $\theta^{t+1}$, in the proximal descent algorithm to improve our error. Indeed, it can be shown that using this alogrithm, the error descreased similarly to the function $\frac{1}{t^2}$.
+Now you only need to make z equal to to this new formula of $\beta^{t+1}$ in the proximal descent algorithm to improve the error. Indeed, it can be shown that using this alogrithm, the error descreased similarly to the function $\frac{1}{t^2}$.
 
 ## Parameters
 
-Concerning the parameters, I use backtracking line search or Nesterov constant to obtain the learning rate. And the
+Concerning the parameters, backtracking line search or Nesterov is used constant to obtain the learning rate (stepsize). And the
 $\lambda$ can be obtained by using cross-validation even if in practice cross validation tend to choose
 a $\lambda$ close to zero due to the bias of the LASSO. It may be more interesting to select a subset of variable by performing the LASSO for a range of 
-$\lambda$ then estimate the coefficients in the subset by using OLS has it is without bias. Then calculate the MSE associated to each $\lambda$, and finaly selecting the
+$\lambda$, then estimate the coefficients in the subset by using OLS has it is without bias. Then calculate the MSE associated to each $\lambda$, and finaly selecting the
 lowest one. 
